@@ -1,0 +1,20 @@
+name: Hello 2
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        type: choice
+        options: ['staging', 'production']
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, world"
+      - uses: actions/checkout@v4
